@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portfolio</title>
+    <link rel="stylesheet" href="./style.css">
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+</head>
+<body>
+    <header class="header">
+        <img src="./images/logo.png" alt="logo">
+        <ul id="menuList">
+            <li><a href="#hero"><i class='bx bx-home-smile' ></i> Home</a></li>
+            <li><a href="#about"><i class='bx bx-user'></i> About</a></li>
+            <li><a href="#projects"><i class='bx bx-briefcase'></i> Projects</a></li>
+            <li><a href="#skills"><i class='bx bx-bar-chart-alt-2'></i> Skills</a></li>
+            <li><a href="#contact"><i class='bx bxs-contact'></i> Contact</a></li>
+        </ul>    
+        <div class="toggle-theme">
+            <input type="checkbox" class="switch-theme" id="switch-theme">
+            <label for="switch-theme" class="toggle-label">
+                <i class='bx bx-sun'></i>
+                <i class='bx bx-moon'></i>
+            </label>
+        </div> 
+        <div class="mobile-navbar" id="mobile-navbar">
+            <i class='bx bx-menu' onclick="toggleMenu()"></i>
+        </div>
+    </header>
+
+    <section class="hero" id="hero">
+        <h1>Hello, I'm  <span> Elina Tota </span></h1>
+        <p>A new passionate web developer dedicated to creating responsive and user-friendly web applications.</p>
+        <a href="#projects" class="hero-btn">View My Work</a>
+    </section>
+
+    <section class="about" id="about">
+        <img src="./images/WhatsApp Image 2024-10-07 at 11.30.32 PM.jpeg" alt="My image">
+        <div id="about-text">
+            <h2>About me</h2>
+            <p>
+                Hi, I'm Elina Tota, a recent graduate with a Bachelor's degree in Informatics. Throughout my studies, I've developed a solid foundation in web development, focusing on front-end technologies such as HTML, CSS, and JavaScript. I'm passionate about learning and excited to apply my skills in real-world projects. My goal is to contribute to innovative, user-friendly web solutions while continuing to grow as a developer.
+            </p>
+            <p>
+                I'm eager to take on new challenges and explore opportunities where I can contribute and learn in equal measure. Whether it's building responsive websites, designing engaging user interfaces, or solving coding problems, I'm excited to continue my journey in the tech world.
+            </p>
+        </div>
+    </section>
+
+    <section class="projects" id="projects">
+        <h2>My Projects</h2>
+        <div class="search-container">
+            <input type="text" id="search-bar" placeholder="Search for projects...">
+            <div class="filter-button">
+                <button class="filter-btn active" data-filter="all">All</button>
+                <button class="filter-btn" data-filter="front-end">Front End</button>
+                <button class="filter-btn" data-filter="full-stack">Full Stack</button>
+            </div>
+        </div>
+        <div class="project-grid"></div>
+
+        <div id="project-modal" class="modal" style="display:none;">
+            <div class="modal-content">
+                <span class="close-button">&times;</span>
+                <img id="modal-image" src="" alt="Project Image">
+                <h3 id="modal-title"></h3>
+                <p id="modal-category"></p>
+                <p id="modal-description"></p>
+                <p id="modal-details"></p>
+                <a id="modal-link" class="hero-btn" target="_blank">View Project</a>
+            </div>
+        </div>
+    </section>
+
+
+    <section class="skills" id="skills">
+        <h2>Technical Skills</h2>
+        <div class="skills-container" id="skills-container">
+    </section>
+
+
+    <section class="contact" id="contact">
+        <h2>Contact Me</h2>
+        <form id="contactForm">
+            <div class="input-group">
+                <label for="name">Name: <span>*</span></label>
+                <input type="text" id="name" name="name" required >
+            </div>
+            <div class="error-message" id="nameError"></div>
+            <div class="input-group">
+                <label for="email">Email: <span>*</span></label>
+                <input type="email" id="email" name="email" required >
+            </div>
+            <div class="error-message" id="emailError"></div>
+            <div class="input-group">
+                <label for="subject">Subject: </label>
+                <input type="text" id="subject" name="subject" >
+            </div>
+            <div class="input-group">
+                <label for="message">Message: <span>*</span></label>
+                <input type="text" id="message" name="message" required >
+            </div>
+            <div class="error-message" id="messageError"></div>
+            <button type="submit" class="hero-btn" id="contact-btn">Send Message</button>
+        </form>
+    </section>
+
+    <button onclick="topFunction()" id="go-to-top"> <i class='bx bx-up-arrow-alt'></i></button>
+
+    
+    <div class="event-container">
+        <div class="calendar" id="calendar">
+            <div class="calendar-header">
+                <button id="prev-month">Previous</button>
+                <h2 id="month-name"></h2>
+                <button id="next-month">Next</button>     
+            </div>
+            <div class="days">
+                <div class="day-name">Sun</div>
+                <div class="day-name">Mon</div>
+                <div class="day-name">Tue</div>
+                <div class="day-name">Wed</div>
+                <div class="day-name">Thu</div>
+                <div class="day-name">Fri</div>
+                <div class="day-name">Sat</div>
+            </div>
+            <div id="calendar-days" class="calendar-days"></div>
+        </div>
+        <div class="add-event"></div>
+       
+       <div class="event-list" id="event-list">
+            <h2>Events List</h2>
+            <ul id="events-list"></ul>
+        </div>
+    </div>
+    <div class="contact">
+        <h2>Add Event</h2>
+        <form id="event-form">
+            <div class="input-group">
+                <label for="event-title">Title: <span>*</span></label>
+                <input type="text" id="event-title" required placeholder="Event Title">
+            </div>
+            <div class="input-group">
+                <label for="event-description">Description: <span>*</span></label>
+                <textarea id="event-description" required placeholder="Event Description"></textarea>
+            </div>
+            <div class="input-group">
+                <label for="event-date">Date: <span>*</span></label>
+                <input type="date" id="event-date" required>
+            </div>
+            <div class="error-message" id="error-event"></div>
+            <button id="add-event" class="hero-btn">Add Event</button>
+        </form>
+    </div>
+    
+
+    <footer>
+        <p>&copy; <span id="year"></span> Elina Tota. All Rights Reserved.</p>
+        <div class="socials">
+            <a href="https://www.linkedin.com/in/elina-tota-2a232830a/" target="_blank">
+                <i class='bx bxl-linkedin'></i>
+            </a>
+            <a href="https://github.com/Eliina0" target="_blank">
+                <i class='bx bxl-github'></i>
+            </a>
+        </div>
+    </footer>
+    
+    <script src="/script.js"></script>
+</body>
+</html>
